@@ -3,6 +3,7 @@ import Sliders from './components/Sliders'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import NewsLetter from './components/NewsLetter'
+import Footer from './components/Footer'
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Hero />
       <Sliders />
       <NewsLetter />
+      <Footer />
     </div>
   );
 }
