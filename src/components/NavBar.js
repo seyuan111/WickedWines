@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <div className="w-full h-[70px] bg-blue-300">
       <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
-        <div className="text-[#4b8037] text-[20px] cursor-pointer font-bold">
+        <div className="text-[#4b8037] text-[25px] cursor-pointer font-bold">
           <h1><Link to='/'>Wicked Wines</Link></h1>
         </div>
         <div className="hidden md:flex">
@@ -18,8 +18,8 @@ const NavBar = () => {
             <li className="ml-4 cursor-pointer"><Link to="/Story">Story</Link></li>
             <li className="ml-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
             <li className="ml-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-            <li className="ml-4 cursor-pointer">Contact</li>
-            <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1">Become a member</button>
+            <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
+            <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
           </ul>
         </div>
         <div onClick={handleNav} className="block md:hidden">
@@ -30,8 +30,8 @@ const NavBar = () => {
         <li className="mb-4 cursor-pointer">story</li>
         <li className="mb-4 cursor-pointer">shop</li>
         <li className="mb-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-        <li className="mb-4 cursor-pointer">contact</li>
-        <button className="m-8 cursor-pointer bg-green-600 rounded px-3 py-1">Become a member</button>
+        <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
+        <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
       </ul>
         </div>
       </div>

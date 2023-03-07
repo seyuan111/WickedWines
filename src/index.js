@@ -5,6 +5,9 @@ import App from './App';
 import Story from './pages/Story'
 import Shop from './pages/Shop'
 import Events from './pages/Events'
+import Contact from './pages/Contact'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
   {
     path: "events",
     element: <Events />,
+  },
+  {
+    path: "contact",
+    element: <Contact />,
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
   }
 ])
 

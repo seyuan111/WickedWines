@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import Wines from '../assets/Wines.jpg'
 
 const Events = () => {
     const [nav, setNav] = useState(false);
@@ -11,7 +12,7 @@ const Events = () => {
   return (
     <div className="w-full h-[70px] bg-blue-300">
     <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
-    <div className="text-[#4b8037] text-[20px] cursor-pointer font-bold">
+    <div className="text-[#4b8037] text-[25px] cursor-pointer font-bold">
       <h1><Link to='/'>Wicked Wines</Link></h1>
     </div>
     <div className="hidden md:flex">
@@ -19,8 +20,8 @@ const Events = () => {
         <li className="ml-4 cursor-pointer"><Link to="/Story">Story</Link></li>
         <li className="ml-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
         <li className="ml-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-        <li className="ml-4 cursor-pointer">Contact</li>
-        <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1">Become a member</button>
+        <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
+        <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
       </ul>
     </div>
     <div onClick={handleNav} className="block md:hidden">
@@ -31,15 +32,17 @@ const Events = () => {
     <li className="mb-4 cursor-pointer"><Link to="/Story">Story</Link></li>
     <li className="mb-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
     <li className="mb-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-    <li className="mb-4 cursor-pointer">Contact</li>
-    <button className="m-8 cursor-pointer bg-green-600 rounded px-3 py-1">Become a member</button>
+    <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
+    <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
   </ul>
     </div>
   </div>
 
-  <div className="w-full h-[100vh] top-[100px]">
-  <div className="w-full h-[20%] text-center flex flex-col justify-center items-center text-black px-4">
+  <div className="w-full h-[100vh] top-[100px] bg-zinc-900/50">
+  <img src={Wines} className="w-full h-full object-cover absolute -z-10" />
+  <div className="w-full h-[20%] text-center flex flex-col justify-center items-center text-white px-4">
     <h1 className="text-[40px] font-bold">Events Happening</h1>
+    <h2>Come join us on our fun. We have various fun events going on</h2>
   </div>
 </div>
     </div>
