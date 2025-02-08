@@ -1,53 +1,54 @@
-import React, {useState} from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-import Wines from '../assets/Wines.jpg'
-import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import Wines from "../assets/Wines.jpg";
+import NavBar from "../components/NavBar";
 
 const Story = () => {
-    const [nav, setNav] = useState(false);
-    const handleNav = () => {
-      setNav(!nav)
-    }
-
   return (
-    <div className="w-full h-[70px] bg-blue-300">
-    <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
-    <div className="text-[#4b8037] text-[25px] cursor-pointer font-bold">
-      <h1><Link to='/'>Wicked Wines</Link></h1>
-    </div>
-    <div className="hidden md:flex">
-      <ul className="flex items-center text-white text-[20px]">
-        <li className="ml-4 cursor-pointer"><Link to="/Story">Story</Link></li>
-        <li className="ml-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
-        <li className="ml-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-        <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
-        <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
-      </ul>
-    </div>
-    <div onClick={handleNav} className="block md:hidden">
-      {nav ? <AiOutlineClose size={30} className="text-black" /> : <AiOutlineMenu size={30} className="text-black"/>}
-    </div>
-    <div className={nav ? "w-full bg-blue-300 text-white absolute top-[90px] left-0 flex justify-center text-center" : "absolute left-[-100%]"}>
-    <ul className="relative">
-    <li className="mb-4 cursor-pointer"><Link to="/Story">Story</Link></li>
-    <li className="mb-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
-    <li className="mb-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-    <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
-    <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
-  </ul>
-    </div>
-  </div>
+    <div className="w-full h-screen relative">
+      {/* Background Image */}
+      <img
+        src={Wines}
+        alt="Wicked Wines"
+        className="w-full h-full object-cover absolute -z-10"
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
-  <div className="w-full h-screen bg-zinc-900/50">
-  <img src={Wines} className="w-full h-full object-cover absolute -z-10" />
-  <div className="w-full h-[90%] text-center flex flex-col justify-center items-center text-white px-4">
-    <h1 className="text-[40px]">About Wicked Wines</h1>
-    <p className="mt-5 text-white text-[20px] text-bold">Wicked Wines is a place where you can buy any type of wines online or pick up wines at the store. There are also indoor wine tasting events and indoor live events. You can purchase your wine indoors, order for pick up, or have it delivered to your home</p>
-    <p className="mt-5 text-white text-[20px] text-bold">We sell a variery of wines. Red, White wines etc. We also do wine slushies indoors while also listen to country music indoors</p>
-  </div>
-  </div>
-    </div>
-  )
-}
+      {/* Navigation */}
+      <NavBar />
 
-export default Story
+      {/* Content Section */}
+      <div className="w-full h-full text-center flex flex-col justify-center items-center text-white px-4 relative z-10">
+        <div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate__animated animate__fadeIn">
+            The Story of Wicked Wines
+          </h1>
+
+          {/* Story Description */}
+          <p className="text-sm sm:text-base md:text-xl font-semibold max-w-3xl mx-auto mb-4 sm:mb-6 animate__animated animate__fadeIn animate__delay-1s">
+            At Wicked Wines, we believe in the experience of savoring the perfect glass of wine. Whether you’re here for a special occasion or just to unwind, we offer a unique selection of wines, from the bold reds to crisp whites. Experience the essence of fine wines with us.
+          </p>
+          
+          <p className="text-sm sm:text-base md:text-xl font-semibold max-w-3xl mx-auto mb-4 sm:mb-6 animate__animated animate__fadeIn animate__delay-1s">
+            From our comfortable indoor wine-tasting events to our live country music nights, there’s something for everyone. And with the option to purchase online or pick up in-store, it’s never been easier to enjoy your favorite wines.
+          </p>
+
+          {/* Call to Action */}
+          <div className="mt-4 sm:mt-6 animate__animated animate__fadeIn animate__delay-2s">
+            <Link
+              to="/shop"
+              className="py-2 px-5 sm:py-3 sm:px-6 bg-gradient-to-b border-2 from-black to-gray-900 text-white text-lg sm:text-xl rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+            >
+              Shop
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Story;
+

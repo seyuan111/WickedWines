@@ -1,52 +1,54 @@
-import React, {useState} from 'react'
-import { Link } from "react-router-dom";
-import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import React from 'react'
 import Wines from '../assets/Wines.jpg'
+import NavBar from '../components/NavBar'
 
 const Events = () => {
-    const [nav, setNav] = useState(false);
-    const handleNav = () => {
-      setNav(!nav)
-    }
+
+  const events = [
+    {
+      id: 1,
+      name: 'Wine Tasting Night',
+      time: 'Saturday, 7:00 PM',
+      description: 'Join us for an exquisite wine tasting experience, with a variety of premium wines to enjoy!',
+    },
+    {
+      id: 2,
+      name: 'Live Music Performance',
+      time: 'Sunday, 5:00 PM',
+      description: 'Enjoy live performances by local artists, and indulge in a relaxed atmosphere with great music.',
+    },
+    {
+      id: 3,
+      name: 'Cooking Class - Italian Specialties',
+      time: 'Friday, 4:00 PM',
+      description: 'Learn how to make authentic Italian dishes with a local chef. Tasting included!',
+    },
+    // Add more events as needed
+  ]
 
   return (
-    <div className="w-full h-[70px] bg-blue-300">
-    <div className="max-w-[1240px] mx-auto px-4 flex justify-between items-center h-full">
-    <div className="text-[#4b8037] text-[25px] cursor-pointer font-bold">
-      <h1><Link to='/'>Wicked Wines</Link></h1>
-    </div>
-    <div className="hidden md:flex">
-      <ul className="flex items-center text-white text-[20px]">
-        <li className="ml-4 cursor-pointer"><Link to="/Story">Story</Link></li>
-        <li className="ml-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
-        <li className="ml-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-        <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
-        <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
-      </ul>
-    </div>
-    <div onClick={handleNav} className="block md:hidden">
-      {nav ? <AiOutlineClose size={30} className="text-black" /> : <AiOutlineMenu size={30} className="text-black"/>}
-    </div>
-    <div className={nav ? "w-full bg-blue-300 text-white absolute top-[90px] left-0 flex justify-center text-center" : "absolute left-[-100%]"}>
-    <ul>
-    <li className="mb-4 cursor-pointer"><Link to="/Story">Story</Link></li>
-    <li className="mb-4 cursor-pointer"><Link to='/Shop'>Shop</Link></li>
-    <li className="mb-4 cursor-pointer"><Link to="/Events">Events</Link></li>
-    <li className="ml-4 cursor-pointer"><Link to="/Contact">Contact</Link></li>
-    <button className="ml-4 cursor-pointer bg-green-600 rounded px-3 py-1"><Link to="Login">Become a member</Link></button>
-  </ul>
-    </div>
-  </div>
-
-  <div className="w-full h-[100vh] top-[100px] bg-zinc-900/50">
-  <img src={Wines} className="w-full h-full object-cover absolute -z-10" />
-  <div className="w-full h-[20%] text-center flex flex-col justify-center items-center text-white px-4">
-    <h1 className="text-[40px] font-bold">Events Happening</h1>
-    <h2>Come join us on our fun. We have various fun events going on</h2>
-  </div>
-</div>
+    <div className="w-full min-h-screen">
+      <NavBar />
+      
+      {/* Event Section */}
+      <div className="mt-10 w-full py-12 px-4 text-center flex flex-col justify-center items-center">
+      
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4">Events Happening</h1>
+        <h2 className="text-lg sm:text-xl mb-8">Come join us for fun events happening throughout the week!</h2>
+        
+        <div className="w-full px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {events.map((event) => (
+            <div key={event.id} className="bg-neutral-200 bg-opacity-80 p-6 rounded-xl shadow-lg transform transition-all hover:scale-105 hover:shadow-xl">
+              <h3 className="text-xl font-semibold text-blue-500">{event.name}</h3>
+              <p className="text-gray-600 mt-2">{event.time}</p>
+              <p className="mt-4 text-gray-800">{event.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
 
 export default Events
+
