@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from '../components/NavBar'
 
 const Checkout = () => {
   const [cardDetails, setCardDetails] = useState({
@@ -19,7 +20,8 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white shadow-md rounded-lg max-w-3xl w-full p-6">
+    <NavBar />
+      <div className="bg-white mt-20 shadow-md rounded-lg max-w-lg w-full px-4 p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Checkout</h2>
 
         {/* Order Summary */}

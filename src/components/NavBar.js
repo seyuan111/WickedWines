@@ -27,6 +27,7 @@ const NavBar = () => {
         {/* Centered Navigation (Hidden on Mobile) */}
         <div className="hidden md:flex flex-1 justify-center">
           <ul className="flex items-center space-x-6 text-white text-[18px]">
+            <li className="cursor-pointer"><Link to="/">Home</Link></li>
             <li className="cursor-pointer"><Link to="/story">Story</Link></li>
             <li className="cursor-pointer"><Link to="/shop">Shop</Link></li>
             <li className="cursor-pointer"><Link to="/events">Events</Link></li>
@@ -53,6 +54,7 @@ const NavBar = () => {
       {/* Mobile Menu */}
       <div className={`fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-900 text-white flex flex-col items-center justify-center transition-all duration-300 ${nav ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
         <ul className="text-center text-[20px] space-y-6">
+          <li onClick={handleNav} className="cursor-pointer"><Link to="/">Home</Link></li>
           <li onClick={handleNav} className="cursor-pointer"><Link to="/story">Story</Link></li>
           <li onClick={handleNav} className="cursor-pointer"><Link to="/shop">Shop</Link></li>
           <li onClick={handleNav} className="cursor-pointer"><Link to="/events">Events</Link></li>
