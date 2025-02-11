@@ -1,46 +1,96 @@
-import React, {useState} from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import {BiArrowBack} from 'react-icons/bi'
-import Wines from '../assets/Wines.jpg'
-import NavBar from '../components/NavBar'
+import { BiArrowBack } from "react-icons/bi";
+import Wines from "../assets/Wines.jpg";
+import NavBar from "../components/NavBar";
 
 const Signup = () => {
-    const back = useNavigate()
+  const navigate = useNavigate();
+
   return (
-    <div className="w-full h-[70px] bg-blue-300">
-    <NavBar />
+    <div className="w-full min-h-screen flex flex-col">
+      {/* Navbar */}
+      <NavBar />
 
-  <div className="w-full h-screen bg-zinc-900/50">
-  <img src={Wines} className="w-full h-full object-cover absolute -z-10" />
-  <div className="flex justify-center items-center h-full">
-  <form className="max-w-[400px] w-full mx-auto bg-white p-8">
-    <BiArrowBack onClick={() => back(-1)} className="cursor-pointer text-[20px]" />
-      <h2 className="text-4xl font-bold text-center py-8 relative">Log in</h2>
-    <div className="flex flex-col mb-4">
-      <label className="relative mb-2">Email:</label>
-      <input className="border relative bg-gray-100 p-2" type="text" placeholder="Email"></input>
-    </div>
-      <div className="flex flex-col mb-4">
-          <label className="relative mb-2">Username:</label>
-          <input className="border relative bg-gray-100 p-2" type="text" placeholder="Username"></input>
+      {/* Main Content */}
+      <div className="w-full flex flex-col justify-center items-center min-h-screen bg-zinc-900/50 relative p-4">
+        {/* Background Image */}
+        <img src={Wines} className="absolute inset-0 w-full h-full object-cover -z-10" alt="Background" />
+
+        {/* Signup Form */}
+        <div className="border-2 mt-20 p-6 md:p-10 rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto relative">
+          {/* Back Button */}
+          <BiArrowBack
+            onClick={() => navigate(-1)}
+            className="cursor-pointer text-[20px] text-white"
+          />
+
+          {/* Title */}
+          <h2 className="text-3xl font-bold text-center text-white mb-6">Sign Up</h2>
+
+          {/* Form */}
+          <form className="space-y-4">
+            {/* Email Input */}
+            <div className="flex flex-col">
+              <label className="text-white font-medium">Email:</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="border bg-gray-100 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Username Input */}
+            <div className="flex flex-col">
+              <label className="text-white font-medium">Username:</label>
+              <input
+                type="text"
+                placeholder="Enter your username"
+                className="border bg-gray-100 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Password Input */}
+            <div className="flex flex-col">
+              <label className="text-white font-medium">Password:</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                className="border bg-gray-100 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Confirm Password Input */}
+            <div className="flex flex-col">
+              <label className="text-white font-medium">Confirm Password:</label>
+              <input
+                type="password"
+                placeholder="Confirm your password"
+                className="border bg-gray-100 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button className="w-full py-3 border-2 hover:bg-black text-white rounded-md text-lg font-semibold transition">
+              Sign Up
+            </button>
+          </form>
+
+          {/* Login Link */}
+          <div className="text-center mt-4">
+            <p className="text-white">
+              Already have an account? {" "}
+              <Link to="/login" className="text-blue-400 font-medium hover:underline">
+                Log in
+              </Link>
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col">
-          <label className="relative mb-2">Password:</label>
-          <input className="border relative bg-gray-100 p-2" type="password" placeholder="password"></input>
-      </div>
-    <div className="flex flex-col mt-2">
-      <label className="relative mb-2">Confirm Password:</label>
-      <input className="border relative bg-gray-100 p-2" type="password" placeholder="password"></input>
     </div>
-      <button className="w-full py-3 mt-8 bg-blue-400 hover:bg-blue-800 relative text-black hover:text-white cursor-pointer">Sign in</button> 
-  </form>
-</div>
-  </div>
+  );
+};
 
-    </div>
-  )
-}
+export default Signup;
 
-export default Signup

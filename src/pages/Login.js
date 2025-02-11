@@ -1,36 +1,86 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
-import Wines from '../assets/Wines.jpg'
-import NavBar from '../components/NavBar'
+import NavBar from "../components/NavBar";
+import Wines from "../assets/Wines.jpg";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <div className="w-full h-[70px] bg-blue-300">
-    <NavBar />
+    <div className="w-full min-h-screen flex flex-col">
+      {/* Navbar */}
+      <NavBar />
 
-    <div className="w-full h-screen bg-zinc-900/50">
-    <img src={Wines} className="w-full h-full object-cover absolute -z-10" />
-    <div className="flex justify-center items-center h-full">
-    <form className="max-w-[400px] w-full mx-auto bg-white p-8">
-        <h2 className="text-4xl font-bold text-center py-8 relative">Log in</h2>
-        <div className="flex flex-col mb-4">
-            <label className="relative mb-2">Username:</label>
-            <input className="border relative bg-gray-100 p-2" type="text" placeholder="Username"></input>
+      {/* Main Content */}
+      <div className="w-full flex flex-col justify-center items-center min-h-screen bg-zinc-900/60 relative p-4">
+        {/* Background Image */}
+        <img src={Wines} className="absolute inset-0 w-full h-full object-cover -z-10" alt="Background" />
+
+        {/* Login Box */}
+        <div className="border-2 mt-20 p-6 md:p-10 rounded-lg shadow-lg w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto relative">
+          <h2 className="text-3xl font-bold text-center text-white mb-6">Log in</h2>
+
+          {/* Form */}
+          <form className="space-y-4">
+            {/* Email Input */}
+            <div className="flex flex-col">
+              <label className="text-white font-medium">Email:</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="border bg-gray-100 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Password Input + Forgot Password */}
+            <div className="flex flex-col">
+              <div className="flex justify-between items-center">
+                <label className="text-white font-medium">Password:</label>
+                <Link to="/forgot-password" className="text-blue-400 text-sm hover:underline">
+                  Forgot password?
+                </Link>
+              </div>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your password"
+                  className="border bg-gray-100 p-2 w-full rounded-md focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-700"
+                >
+                  {showPassword ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
+            </div>
+
+            {/* Remember Me Checkbox */}
+            <div className="flex items-center space-x-2">
+              <input type="checkbox" className="w-4 h-4 cursor-pointer" />
+              <label className="text-white">Remember Me</label>
+            </div>
+
+            {/* Submit Button */}
+            <button className="w-full py-3 border-2 hover:bg-black text-white rounded-md text-lg font-semibold transition">
+              Sign In
+            </button>
+          </form>
+
+          {/* Signup Link */}
+          <div className="text-center mt-4">
+            <p className="text-white">
+              Don't have an account? {" "}
+              <Link to="/signup" className="text-blue-400 font-medium hover:underline">
+                Sign up
+              </Link>
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col">
-            <label className="relative mb-2">Password:</label>
-            <input className="border relative bg-gray-100 p-2" type="password" placeholder="password"></input>
-        </div>
-        <button className="w-full py-3 mt-8 bg-blue-400 hover:bg-blue-800 relative text-black hover:text-white cursor-pointer">Sign in</button>
-        <p className="relative"><input className="mr-2 relative" type="checkbox"></input>Remember this account</p>
-        <p className="relative"><span className="text-blue-500 relative cursor-pointer"><Link to="/signup">Sign up</Link></span> to become a member</p>    
-    </form>
-</div>
+      </div>
     </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Login
+export default Login;

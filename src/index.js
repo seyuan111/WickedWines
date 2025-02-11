@@ -8,6 +8,8 @@ import Events from './pages/Events'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
   {
     path: "contact",
     element: <Contact />,
+  },
+  {
+    path: "cart",
+    element: <Cart />,
+  },
+  {
+    path: "checkout",
+    element: <Checkout />,
   },
   {
     path: "login",

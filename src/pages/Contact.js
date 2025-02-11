@@ -12,7 +12,7 @@ const Contact = () => {
         <div className="absolute inset-0 bg-black/50"></div>
 
         <div className="relative z-20 w-full h-full flex flex-col justify-center items-center text-white px-4">
-          <h1 className="text-4xl font-bold underline mb-6">Contact Us</h1>
+          <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
 
           <div className="bg-white bg-opacity-80 p-8 rounded-xl shadow-lg max-w-lg w-full">
             <div className="text-center mb-4">

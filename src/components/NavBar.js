@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai";
 import { FaWineGlassAlt } from "react-icons/fa";
+import Cart from "../pages/Cart"; // Import Cart component
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const handleNav = () => {
     setNav(!nav);
-    // Prevent scrolling when menu is open
-    if (!nav) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = nav ? "auto" : "hidden";
   };
 
   return (
@@ -30,29 +27,21 @@ const NavBar = () => {
         {/* Centered Navigation (Hidden on Mobile) */}
         <div className="hidden md:flex flex-1 justify-center">
           <ul className="flex items-center space-x-6 text-white text-[18px]">
-            <li className="cursor-pointer">
-              <Link to="/story">Story</Link>
-            </li>
-            <li className="cursor-pointer">
-              <Link to="/shop">Shop</Link>
-            </li>
-            <li className="cursor-pointer">
-              <Link to="/events">Events</Link>
-            </li>
-            <li className="cursor-pointer">
-              <Link to="/contact">Contact</Link>
-            </li>
+            <li className="cursor-pointer"><Link to="/story">Story</Link></li>
+            <li className="cursor-pointer"><Link to="/shop">Shop</Link></li>
+            <li className="cursor-pointer"><Link to="/events">Events</Link></li>
+            <li className="cursor-pointer"><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
-        {/* Login & Cart (Right-aligned) */}
+        {/* Login & Cart */}
         <div className="hidden md:flex items-center space-x-4">
           <Link to="/login" className="border-2 text-white px-4 py-2 rounded-md hover:bg-white hover:text-black transition">
             Login
           </Link>
-          <Link to="/cart">
+          <button onClick={() => setCartOpen(true)}>
             <AiOutlineShoppingCart size={25} className="text-white cursor-pointer" />
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -62,29 +51,23 @@ const NavBar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-900 text-white flex flex-col items-center justify-center transition-all duration-300 ${
-          nav ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-        }`}
-      >
+      <div className={`fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-900 text-white flex flex-col items-center justify-center transition-all duration-300 ${nav ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}`}>
         <ul className="text-center text-[20px] space-y-6">
-          <li onClick={handleNav} className="cursor-pointer">
-            <Link to="/story">Story</Link>
-          </li>
-          <li onClick={handleNav} className="cursor-pointer">
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li onClick={handleNav} className="cursor-pointer">
-            <Link to="/events">Events</Link>
-          </li>
-          <li onClick={handleNav} className="cursor-pointer">
-            <Link to="/contact">Contact</Link>
-          </li>
-          <Link to="/login" onClick={handleNav} className="block bg-green-600 px-6 py-2 rounded-md hover:bg-green-700 transition">
+          <li onClick={handleNav} className="cursor-pointer"><Link to="/story">Story</Link></li>
+          <li onClick={handleNav} className="cursor-pointer"><Link to="/shop">Shop</Link></li>
+          <li onClick={handleNav} className="cursor-pointer"><Link to="/events">Events</Link></li>
+          <li onClick={handleNav} className="cursor-pointer"><Link to="/contact">Contact</Link></li>
+          <Link to="/login" onClick={handleNav} className="block border-2 px-6 py-2 rounded-md transition">
             Login
           </Link>
+          <button onClick={() => setCartOpen(true)}>
+            <AiOutlineShoppingCart size={25} className="text-white cursor-pointer" />
+          </button>
         </ul>
       </div>
+
+      {/* Cart Sidebar */}
+      <Cart cartOpen={cartOpen} setCartOpen={setCartOpen} />
     </div>
   );
 };
